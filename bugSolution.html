@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solutions</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+  <script>
+    // Accessing attributes safely
+    let div = document.getElementById("myDiv");
+    let text = div.getAttribute("id"); // Accessing an existing attribute
+    console.log(text); // Outputs "myDiv"
+    
+    //Correctly adding multiple elements using DOM methods instead of innerHTML
+    let newParagraph = document.createElement("p");
+    newParagraph.textContent = "This is a paragraph.";
+    let newSpan = document.createElement("span");
+    newSpan.textContent = "This is a span.";
+    div.appendChild(newParagraph);
+    div.appendChild(newSpan);
+    
+    //Handling event listeners after changes in innerHTML. Redo the event listener after changing innerHTML
+    div.addEventListener("click", function(){
+      alert("Div clicked");
+    });
+    let newButton = document.createElement("button");
+    newButton.textContent = "Click me";
+    newButton.addEventListener("click", function(){
+      alert("Button clicked");
+    });
+    div.innerHTML = ""; //Clear existing content
+    div.appendChild(newButton);
+    
+  </script>
+</body>
+</html>
