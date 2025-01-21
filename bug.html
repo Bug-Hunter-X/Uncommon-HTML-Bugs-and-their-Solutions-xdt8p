@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+  <script>
+    // Attempting to access a non-existent attribute
+    let text = document.getElementById("myDiv").getAttribute("nonExistentAttr");
+    console.log(text); // Outputs null
+    
+    // Incorrect use of innerHTML to add multiple elements
+    document.getElementById("myDiv").innerHTML = "<p>This is a paragraph.</p> <span>This is a span.</span>"; 
+    
+    // Using innerHTML on an element with event listeners may lead to unexpected behavior
+    document.getElementById("myDiv").addEventListener("click", function(){
+      alert("Div clicked");
+    });
+    document.getElementById("myDiv").innerHTML = "<button>Click me</button>";
+    
+  </script>
+</body>
+</html>
